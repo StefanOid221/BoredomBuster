@@ -19,7 +19,7 @@ data class Task(
     @ColumnInfo (name = "participants")
     val participants: Int,
     @ColumnInfo (name = "price")
-    val price: Int,
+    val price: Double,
     @ColumnInfo (name = "link")
     val link: String,
     @ColumnInfo (name = "accessibility")
@@ -34,7 +34,7 @@ data class Task(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readInt(),
-        parcel.readInt(),
+        parcel.readDouble(),
         parcel.readString()!!,
         parcel.readInt(),
         parcel.readBoolean()
@@ -46,7 +46,7 @@ data class Task(
         parcel.writeString(activity)
         parcel.writeString(type)
         parcel.writeInt(participants)
-        parcel.writeInt(price)
+        parcel.writeDouble(price)
         parcel.writeString(link)
         parcel.writeInt(accessibility)
     }

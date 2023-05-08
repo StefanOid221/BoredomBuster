@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [Task::class],
-    version = 4
+    version = 7
 )
 private abstract class AbstractGradeDatabase: RoomDatabase() {
     abstract fun taskDao(): TaskDao

@@ -18,13 +18,14 @@ class MainActivity : AppCompatActivity() {
     private var dialog: Dialog? = null
     private lateinit var button: Button
     private lateinit var buttonChange: Button
-    val tasks = arrayOf("random","education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork")
+    val tasks = arrayOf("Random","Education", "Recreational", "Social", "DIY", "Charity", "Cooking", "Relaxation", "Music", "Busywork")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         supportActionBar?.title = "Boredom Buster"
+
 
         presenter = MainActivityPresenter(Model(applicationContext), this)
 
@@ -59,9 +60,7 @@ class MainActivity : AppCompatActivity() {
     fun showDialog(task:Task){
         dialog = Dialog(this)
         dialog?.setContentView(R.layout.dialog_custom)
-        val subjectCodeTextView = dialog?.findViewById<TextView>(R.id.taskKey)
-        subjectCodeTextView?.text = task.key
-        val okButton = dialog?.findViewById<Button>(R.id.button_ok)
+        val okButton = dialog?.findViewById<ImageButton>(R.id.button_ok)
         val imageButton = dialog?.findViewById<ImageButton>(R.id.imageFavorite)
         val subjectNameTextView = dialog?.findViewById<TextView>(R.id.taskActivity)
         subjectNameTextView?.text = task.activity

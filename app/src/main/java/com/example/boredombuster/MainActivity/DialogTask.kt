@@ -22,7 +22,6 @@ class DialogTask : DialogFragment() {
         var button_ok = view.findViewById<Button>(R.id.button_ok)
         var button_update = view.findViewById<Button>(R.id.imageFavorite)
         var activity = view.findViewById<TextView>(R.id.taskActivity)
-        var key = view.findViewById<TextView>(R.id.taskKey)
 
 
         button_ok.setOnClickListener {

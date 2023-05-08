@@ -16,10 +16,14 @@ class RecyclerAdapter(var taskList: ArrayList<Task>, private val onClickListener
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textViewCode.text = taskList[position].activity
-        holder.textViewName.text = taskList[position].key
+
+        holder.textViewType.text = taskList[position].type
+        holder.textViewActivity.text = taskList[position].activity
+        holder.textViewParticipants.text = taskList[position].participants.toString()
+        holder.textViewPrice.text = taskList[position].price.toString()
+
         val subject = taskList[position]
-        holder.textViewName.setOnClickListener{view->
+        holder.textViewActivity.setOnClickListener{view->
             onClickListener.invoke(view,subject)
         }
     }
@@ -31,7 +35,10 @@ class RecyclerAdapter(var taskList: ArrayList<Task>, private val onClickListener
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textViewCode : TextView = view.findViewById(R.id.subjectCode)
-        val textViewName : TextView = view.findViewById(R.id.subjectName)
+        val textViewType : TextView = view.findViewById(R.id.taskCategory)
+        val textViewActivity : TextView = view.findViewById(R.id.taskActivity)
+        val textViewParticipants : TextView = view.findViewById(R.id.taskParticipants)
+        val textViewPrice : TextView = view.findViewById(R.id.taskPrice)
+
     }
 }

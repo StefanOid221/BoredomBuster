@@ -26,8 +26,11 @@ class Model (context: Context) {
             val task = withContext(Dispatchers.IO) {
                 dao.getTask(key)
             }
-            if (task != null)
+            if (task != null){
+                Log.d("e",task.toString())
                 listener.onResponse(task)
+            }
+
             else listener.onResponse(null)
         }
         else{

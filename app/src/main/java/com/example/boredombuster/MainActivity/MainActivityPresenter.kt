@@ -9,6 +9,8 @@ class MainActivityPresenter (private val model: Model, private val view: MainAct
 
     init {
 
+
+
     }
     fun getTask(fromNetwork: Boolean, key : String?) {
         var errorListener = Response.ErrorListener {
@@ -34,5 +36,15 @@ class MainActivityPresenter (private val model: Model, private val view: MainAct
 
     fun updateFavorite(task: Task) {
         model.updateFavorite(task)
+    }
+    fun getAllTasks(){
+        var errorListener = Response.ErrorListener {
+        }
+        var listenerAllTasks = object: Response.Listener<ArrayList<Task>> {
+            override fun onResponse(response: ArrayList<Task>){
+                view.allTasks = response
+            }
+        }
+        model.getAllTasks(listenerAllTasks,errorListener)
     }
 }

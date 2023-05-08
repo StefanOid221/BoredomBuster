@@ -18,7 +18,8 @@ class MainActivity : AppCompatActivity() {
     private var dialog: Dialog? = null
     private lateinit var button: Button
     private lateinit var buttonChange: Button
-    val tasks = arrayOf("Random","Education", "Recreational", "Social", "DIY", "Charity", "Cooking", "Relaxation", "Music", "Busywork")
+    val tasks = arrayOf("education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork")
+    var allTasks: ArrayList<Task> = ArrayList<Task>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +34,11 @@ class MainActivity : AppCompatActivity() {
 
 
         val spinner = findViewById<Spinner>(R.id.searchSpinner)
-        val arrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tasks)
+        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, tasks)
         spinner.adapter = arrayAdapter
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                Toast.makeText(applicationContext, "selected activity "+ tasks[position], Toast.LENGTH_SHORT).show()
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         }
         button = findViewById(R.id.buttonFavoritesActivity)
         button.setOnClickListener{
+            presenter.getAllTasks()
             changeActivity()
         }
     }
@@ -90,7 +91,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun changeActivity(){
+//        Intent(this, RecyclerActivityView::class.java).also{
+//            startActivity(it)
+//        }
+        var bundle: Bundle = Bundle()
         Intent(this, RecyclerActivityView::class.java).also{
+            bundle.putParcelableArrayList("array",allTasks)
+            it.putExtras(bundle)
             startActivity(it)
         }
     }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.example.boredombuster.R
@@ -19,8 +20,8 @@ class DialogTask : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.dialog_custom, container, false)
-        var button_ok = view.findViewById<Button>(R.id.button_ok)
-        var button_update = view.findViewById<Button>(R.id.imageFavorite)
+        var button_ok = view.findViewById<ImageButton>(R.id.button_ok)
+        var button_update = view.findViewById<ImageButton>(R.id.imageFavorite)
         var activity = view.findViewById<TextView>(R.id.taskActivity)
 
 

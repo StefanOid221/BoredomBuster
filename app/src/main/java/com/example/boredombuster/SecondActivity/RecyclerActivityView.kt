@@ -28,6 +28,8 @@ class RecyclerActivityView: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recycler_activity)
 
+        allTasks = intent.getParcelableArrayListExtra("array")!!
+
         supportActionBar?.title = "Favorite Activities List"
 
         presenter = RecyclerActivityPresenter(Model(applicationContext), this)
@@ -41,7 +43,7 @@ class RecyclerActivityView: AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = RecyclerAdapter(allTasks, onClickListener = {view, Task -> this.presenter.showDialog(Task)})
         recyclerView.adapter = adapter
-
+        adapter.updateAdapter(allTasks)
         presenter.replenishAdapter()
 
 
@@ -50,7 +52,7 @@ class RecyclerActivityView: AppCompatActivity() {
     fun showDialog(task:Task){
         dialog = Dialog(this)
         dialog?.setContentView(R.layout.dialog_custom)
-        val okButton = dialog?.findViewById<Button>(R.id.button_ok)
+        val okButton = dialog?.findViewById<ImageButton>(R.id.button_ok)
         val imageButton = dialog?.findViewById<ImageButton>(R.id.imageFavorite)
         val subjectNameTextView = dialog?.findViewById<TextView>(R.id.taskActivity)
         subjectNameTextView?.text = task.activity

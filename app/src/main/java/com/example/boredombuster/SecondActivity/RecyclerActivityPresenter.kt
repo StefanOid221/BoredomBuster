@@ -20,12 +20,13 @@ class RecyclerActivityPresenter (private val model: Model, private val view: Rec
                 view.showDialog(response)
             }
         }
-        model.getTask(true,task.key,listenerTask,errorListener)
+        model.getTask(false,task.key,listenerTask,errorListener)
+        updateAdapter()
     }
     fun updateFavorite(task: Task) {
         model.updateFavorite(task)
     }
-    fun updateAdapter(function: () -> Unit) {
+    fun updateAdapter() {
         view.adapter.updateAdapter(view.allTasks)
     }
     fun replenishAdapter(){

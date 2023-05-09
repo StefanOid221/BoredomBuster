@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="5dp"
                     android:text="Description:"
                     android:textColor="@color/mid_yellow"
                     android:textSize="12sp"
@@ -60,11 +60,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="left"
+                    android:layout_marginLeft="8dp"
                     android:text="TextView"
                     android:textColor="@color/bright_yellow"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    android:gravity="center"
                     tools:text="Description here" />
             </LinearLayout>
 
